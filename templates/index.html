@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>I'm Hungry</title>
+    <title>What to Eat</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-KyIJTd109NLz4GmtEAffi7fBVKfppeA&libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<API_KEY>&libraries=places"></script>
   </head>
-  <body>
+  <body style="text-align: center;">
    
-    <h1>Enter your location</h1>
-    <form action="{{ url_for('index') }}" method="POST">
-        <input type="text" name="location" id="searchTextField" required>
-        <input type="submit" value="search">
+    <h1 style="font-size: 50px;">What to Eat</h1>
+    <div style="text-align: center; margin-left: 10%; margin-right:10%; margin-bottom: 75px;">
+      <p>Do you find yourself immobolized by the number of food options in your area?</p>
+      <!-- <p>Trveled to a new area and don't know what's around? Has your significant other ever made choosing a restaraunt difficult?</p> -->
+      <p>Enter in your location and have the choice made for you.</p>
+      <p>Not satisfied with the result? Try again!</p>
+    </div>
+
+
+    <form action="{{ url_for('index') }}" method="POST" style="text-align: center;">
+        <input type="text" name="location" id="searchTextField" required style="font-size: 30px; text-align: center;">
+        <br />
+        <input type="submit" value="Search" style="padding: 15px; margin-top: 20px; margin-bottom: 75px; background-color: #3274d6; border: 0; cursor: pointer; font-weight: bold; color: #ffffff;">
     </form>
 
-    <div class="place">
+    <div style="font-size: 30px;">
       {{ place }}
     </div>
-    
+    <div style="font-size: 30px;">
+      <a href="https://maps.google.com/?q={{ address }}">{{ address }}</a>
+    </div>
+
   </body>
   <script>
       function initialize() {
