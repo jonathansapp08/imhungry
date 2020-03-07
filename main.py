@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import googlemaps
 import random
 
-api_key = ""
+api_key = "AIzaSyC-KyIJTd109NLz4GmtEAffi7fBVKfppeA"
 
 app = Flask(__name__)
 
@@ -34,6 +34,5 @@ def index():
     return render_template('index.html')
 
 
-# Take out for GCP
 if __name__ == "__main__":
    app.run()
