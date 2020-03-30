@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import googlemaps
 import random
 
-api_key = "AIzaSyC-KyIJTd109NLz4GmtEAffi7fBVKfppeA"
+api_key = ""
 
 app = Flask(__name__)
 
