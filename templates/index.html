@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>What to Eat</title>
-    <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What to Eat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<API_KEY>&libraries=places"></script>
   </head>
-  <body style="text-align: center;">
-   
-    <h1 style="font-size: 50px;">What to Eat</h1>
-    <div style="text-align: center; margin-left: 10%; margin-right:10%; margin-bottom: 75px;">
-      <p>Do you find yourself immobolized by the number of food options in your area?</p>
-      <!-- <p>Trveled to a new area and don't know what's around? Has your significant other ever made choosing a restaraunt difficult?</p> -->
-      <p>Enter in your location and have the choice made for you.</p>
-      <p>Not satisfied with the result? Try again!</p>
-    </div>
+    <body class="Site" style="font-size: 0.95rem;">
+      <div id="page_style" class="Site-content page__style page__description">
+        <div id="home_content">
 
+          <div style="margin-top: 15%"></div>
 
-    <form action="{{ url_for('index') }}" method="POST" style="text-align: center;">
-        <input type="text" name="location" id="searchTextField" required style="font-size: 30px; text-align: center;">
-        <br />
-        <input type="submit" value="Search" style="padding: 15px; margin-top: 20px; margin-bottom: 75px; background-color: #3274d6; border: 0; cursor: pointer; font-weight: bold; color: #ffffff;">
-    </form>
+          <div style="text-align: center;">
+              <h1 class="title is-1">What To Eat</h1>
+              <p class="subtitle is-4">Enter in your location and have the choice made for you.</p>         
+          </div>
+                        
+          <div class="content column is-half is-offset-one-quarter" style="margin-top: 30px; padding-bottom: 0; margin-bottom: 20px;">
+              <form action="{{ url_for('index') }}" method="POST">
+                  <div class="field has-addons">
+                      <div class="control has-icons-left is-expanded">
+                          <input class="input is-medium" type="search" placeholder="Enter your location" name="location" id="searchTextField" required autofocus="autofocus" onfocus="this.select()">
+                          <span class="icon is-medium is-left" style="cursor: pointer">
+                                <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fa" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg><!-- <i class="fa fa-search"></i> -->
+                  </span>
+                      </div>
+                      <div class="control">
+                          <button class="button input is-medium search-button-icon"><svg class="svg-inline--fa fa-arrow-right fa-w-14" aria-hidden="true" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg><!-- <i class="fas fa-arrow-right"></i> -->
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          
+              <p style="font-size: 1.2em; padding-top: 15px; text-align: center;">
+                  &nbsp; Not satisfied with your result? <a href="{{ url_for('index') }}">Try Again</a>
+              </p>
 
-    <div style="font-size: 30px;">
-      {{ place }}
-    </div>
-    <div style="font-size: 30px;">
-      <a href="https://maps.google.com/?q={{ address }}">{{ address }}</a>
-    </div>
+          </div>
+                        
+          <div style="text-align: center; padding-top: 15%;" class="is-size-3">
+            <div>
+              {{ place }}
+            </div>
+            <div>
+              <a href="https://maps.google.com/?q={{ address }}">{{ address }}</a>
+            </div>
+          </div>
 
-  </body>
-  <script>
-      function initialize() {
-    var input = document.getElementById('searchTextField');
-    new google.maps.places.Autocomplete(input);
-  }
-  
-  google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
+        </div>
+      </div>  
 
-  
+      <script>
+          function initialize() {
+        var input = document.getElementById('searchTextField');
+        new google.maps.places.Autocomplete(input);
+        }
+    
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    </body>  
 </html>
